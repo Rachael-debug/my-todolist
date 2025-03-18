@@ -1,0 +1,891 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Caveat:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light&family=Shadows+Into+Light+Two&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  /* font-family: "Quicksand", sans-serif; */
+  /* line-height: 1.5; */
+
+  font-family: "Caveat";
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  color: #292929;
+}
+
+/* main {
+  width: 90%;
+  max-width: 50rem;
+  margin: auto;
+} */
+
+body{
+  margin-left: 50px;
+  margin-right: 50px;
+ 
+  padding-bottom: 50px;
+  background-image: url("../src/assets/doodles\ background.png"), url("../src/assets/paper\ bg.png");
+  background-repeat: repeat, repeat, repeat, repeat;
+  background-color: white;
+  background-size: cover;
+  /* opacity: 0.6; */
+  overflow-x: hidden;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  
+  margin:0px;
+  padding-top: 30px;
+  align-items: baseline;
+  padding-bottom: 10px;
+  /* background-color: #ffffff */
+};
+
+header h1{
+  margin:0px;
+  font-family: "Montserrat";
+}
+
+
+/* Progress bar styling */
+.taskProgress{
+  margin-top: 30px;
+}
+
+.taskProgress label{
+  font-family: "Montserrat";
+  font-size: 16px;
+  font-weight: 500;
+}
+
+progress {
+  margin-top: 10px;
+  border-radius: 7px; 
+  width: 100%;
+  height: 30px;
+  border: 1px solid #292929 ;
+  animation: progress 5s linear forwards;
+  transition: width 0.5s ease-in-out;
+}
+progress::-webkit-progress-bar {
+  border-radius: 7px;
+  transition: width 0.5s ease-in-out;
+  background: repeating-linear-gradient(
+    -45deg,
+    #cd899f2c,
+    #cd899f2c 10px,
+    #ffffff5c 10px,
+    #ffffff5c 20px
+  );
+}
+progress::-webkit-progress-value {
+  background-image: url("../src/assets/pencil\ scrible.png");
+  background-repeat: no-repeat;
+  background-color: #29292934;
+  background-size: 1500px;
+  background-position: center;
+  border-radius: 6px 0px 0px 6px;
+  box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+  transition: width 0.5s ease-in-out;
+}
+progress::-moz-progress-bar {
+  border-radius: 7px;
+  transition: width 0.5s ease-in-out;
+  background: repeating-linear-gradient(
+    -45deg,
+    #cd899f2c,
+    #cd899f2c 10px,
+    #ffffff 10px,
+    #ffffff 20px
+  );
+}
+#progressPercent{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #29292974;
+  margin-top: 7px;
+}
+
+/* .headerandprogressWrapper{
+  position: sticky;
+  top: 10px;
+  background-color: #ffffff
+  
+} */
+
+/* .filterandadd{
+  margin-top: auto;
+  margin-bottom: auto;
+  position: relative;
+  
+} */
+
+.filterandadd select{
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-family: "Montserrat";
+  cursor: pointer;
+  font-size: 16px;
+  background-color: #ffffff00;
+}
+.filterandadd option{
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+.addButton{
+  padding: 9px 11px;
+  border-radius: 10px;
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0);
+  margin-left: 6px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.4s ease-out;
+}
+.addButton:hover{
+  color: #cd899f;
+  background-color: #292929;
+  
+}
+
+
+.TotalCheckList{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  
+}
+#addTaskButton{
+  width: 100%;
+  /* padding: 16px; */
+  height: 50px;
+  background-color: #292929;
+  border-radius: 10px;
+  font-family: "Montserrat";
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid #292929;
+  color: #cd899f;
+  transition: all 1.4s ease-out;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  animation: pulse 2s infinite ease-in-out;
+}
+#addTaskButton:hover{
+  background-color: #cd899f;
+  color: #292929;
+  font-weight: 500;
+  font-size: 17px;
+  transition: all 0.4s ease-in;
+}
+
+
+.createTasksWrapper{
+  position: fixed;
+  top: 16%;
+  width: 40%;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-image: url("../src/assets/lined\ paper\ bg.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: cover;
+  display: block;
+  animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
+}
+
+.createTasksWrapper h2{
+  text-align: center;
+  margin-bottom: 20px;
+}
+.createTasks input, .createTasks select{
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #292929;
+  font-size: 22px;
+  font-family: "Caveat";
+  padding: 0px 10px;
+  margin-bottom: 10px;
+  margin-top:5px;
+  background-color: #ffffff00;
+}
+.createTasks label{
+  font-family: "Montserrat";
+  font-weight: 600;
+}
+.createTasks input:focus, .createTasks select:focus{
+  border: 1px solid #cd899f;
+  outline: 1px solid #cd899f;
+}
+/* .createTasks p{
+  margin-top:60px;
+} */
+.taskAdded input:checked  + label{
+  text-decoration: line-through;
+  color: #29292993;
+}
+
+.taskAdded input:checked {
+  accent-color: #cd899f;
+}
+
+.createTasksWrapper .fa-square-xmark{
+  position: fixed;
+  font-size: 35px;
+  right: 8%;
+  top: 8%;
+  cursor: pointer;
+  transition: all 0.4s ease-out;
+  color: #292929;
+}
+.createTasksWrapper .fa-square-xmark:hover{
+ color: #cd899f;
+}
+.createTasks input[type="submit"]{
+  border: 1px solid #292929;
+  background-color: #cd899f;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Montserrat";
+}
+.createTasks input[type="submit"]:hover{
+  background-image: url("../src/assets/pencil\ scrible.png");
+  background-repeat: no-repeat;
+  background-color: #29292934;
+  background-size: 1500px;
+  background-position: center;
+  /* background-color: #292929; */
+  cursor: pointer;
+  color: #ffffff;
+  
+}
+
+.taskCheckList{
+  width: 100%;
+  text-align: center;
+  list-style-type: none;
+}
+.taskCheckList #altText{
+  font-size: 22px;
+}
+.taskCheckList li{
+  display: flex;
+  padding: 4px 10px;
+  border: 1px solid #292929;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  text-align: left;
+  animation: slide-in-from-left 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+.taskCheckList li:hover{
+  outline: 2px solid #292929;
+}
+.taskAdded{
+  width: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 22px;
+  /* font-weight: 500; */
+}
+.taskAdded label{
+  margin-left: 5px;
+}
+.taskAdded input{
+  cursor: pointer;
+}
+.taskInfo{
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: right;
+}
+.priorityAdded{
+  width: 40px;
+  padding: 10px;
+  background-color: #cd899f;
+  border: 1px solid #292929;
+  border-radius: 10px;
+  font-weight: 600;
+ 
+  /* margin-right: 10px; */
+}
+
+.dateAdded{
+  font-size: 16px;
+  width: max-content;
+  /* background-color: #292929;
+  border: 1px solid #292929;
+  color: #cd899f; */
+  border-radius: 10px;
+  padding: 10px;
+  padding-left: auto;
+}
+.dateAdded .fa-calendar{
+  margin-right: 5px;
+}
+.taskInfo button{
+  font-size: 20px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid #292929;
+  border-radius: 10px;
+  padding: 10px;
+  color: #292929;
+  transition: all 0.4s ease-in;
+  cursor: pointer;
+}
+.taskInfo button:hover{
+  background-color: #292929;
+  color: #cd899f;
+}
+
+#changeTitle{
+  width: 90%;
+  font-family: "Caveat";
+  font-size: 22px;
+  margin-left: 5px;
+  border-radius: 7px;
+  border: 1px solid #292929;
+  background-color: #ffffff00;
+  padding: 2px;
+  animation: pulse-text 2s infinite;
+}
+#changeDate{
+  width: 42%;
+  font-family: "Caveat";
+  font-size: 16px;
+  padding-left: 0px;
+  /* margin-right: -20px; */
+  border-radius: 7px;
+  border: 1px solid #292929;
+  background-color: #ffffff00;
+  padding: 5px;
+  /* margin: 0px 5px; */
+  animation: pulse-text 2s infinite;
+  
+}
+
+
+#deleteOverlay{
+  position: fixed;
+  top: 25%;
+  width: 40%;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-image: url("../src/assets/lined\ paper\ bg.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Montserrat";
+  transition: all 0.4s ease-in;
+  animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
+}
+
+#deleteOverlay h2{
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+#deleteOverlay button{
+  padding: 7px 10px;
+  border: 1px solid #292929;
+  border-radius: 7px;
+  font-family: "Montserrat";
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.4s ease-in;
+}
+#deleteOverlay .fa-heart-crack{
+  font-size: 50px;
+  color: #cd899f;
+}
+#confirmDelete{
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+#allowDelete{
+  background-color: rgba(255, 255, 255, 0);
+}
+#allowDelete:hover, #cancelDelete:hover{
+  background-color: #292929;
+  color: #cd899f;
+  transition: all 0.4s ease-in;
+}
+#cancelDelete{
+  background-color: #cd899f;
+}
+
+#mascot{
+  position: absolute;
+  width: 100px;
+  top: 155px;
+  right: 10px;
+}
+#strawberryMilk{
+  position: absolute;
+  width: 225px;
+  bottom: 100px;
+}
+#chaseGoals{
+  position: absolute;
+  width: 230px;
+  right: 60px;
+  bottom: 70px;
+}
+
+#congratsOverlay{
+  position: fixed;
+  top: 25%;
+  right: 35%;
+  width: 400px;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  background-image: url("../src/assets/lined\ paper\ bg.png");
+  background-repeat: no-repeat;
+  background-color: white;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  transition: all 0.4s ease-in;
+  animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
+}
+#congratsOverlay h1{
+  font-size: 50px;
+}
+#congratsOverlay p{
+  font-family: "Montserrat";
+  font-size: 14px;
+}
+#congratsOverlay button{
+  font-family: "Montserrat";
+  font-size: 14px;
+  padding: 7px 10px;
+  background-color: #cd899f;
+  border: 1px solid #292929;
+  margin-top: 30px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+#congratsOverlay button:hover{
+  background-color: #212121;
+  color: #cd899f;
+  transition: all 0.4s ease-in-out;
+}
+
+
+@keyframes pulse {
+  0% {
+    border-color: #292929;
+    box-shadow: 0 0 0 0 rgba(41, 41, 41, 0.4);
+  }
+  50% {
+    border-color: #000000;
+    box-shadow: 0 0 0 0.5rem rgba(0, 0, 0, 0);
+  }
+  100% {
+    border-color: #292929;
+    box-shadow: 0 0 0 0 rgba(41, 41, 41, 0);
+  }
+}
+@keyframes pulse-text {
+  0% {
+    color: #707070;
+  }
+  50% {
+    color: #212121;
+  }
+  100% {
+    color: #707070;
+  }
+}
+
+@keyframes slide-in-from-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
+@media only screen and (max-width: 600px){
+  body{
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+
+  header h1{
+    /* margin:0px;
+    font-family: "Montserrat"; */
+    font-size: 28px;
+  }
+  .taskProgress label{
+    /* font-family: "Montserrat"; */
+    font-size: 14px;
+    /* font-weight: 500; */
+  }
+
+  progress {
+    margin-top: 7px;
+    border-radius: 5px; 
+    /* width: 100%;
+    height: 30px;
+    border: 1px solid #292929 ;
+    animation: progress 5s linear forwards;
+    transition: width 0.5s ease-in-out; */
+  }
+  progress::-webkit-progress-bar {
+    border-radius: 5px;
+    /* transition: width 0.5s ease-in-out;
+    background: repeating-linear-gradient(
+      -45deg,
+      #cd899f2c,
+      #cd899f2c 10px,
+      #ffffff5c 10px,
+      #ffffff5c 20px
+    ); */
+  }
+  progress::-webkit-progress-value {
+    background-size: 1000px;
+    /* background-position: center; */
+    border-radius: 4px 0px 0px 6px;
+    /* box-shadow: 1px 1px 4px rgba( 0, 0, 0, 0.2 );
+    transition: width 0.5s ease-in-out; */
+  }
+  progress::-moz-progress-bar {
+    border-radius: 5px;
+  }
+  #progressPercent{
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #29292974; */
+    margin-top: 3px;
+  }
+
+
+  .filterandadd select{
+    padding: 8px 6px;
+    border-radius: 7px;
+    font-size: 13px;
+  }
+  /* .filterandadd option{
+    border-bottom: 1px solid black;
+    cursor: pointer;
+  } */
+  .addButton{
+    /* padding: 9px 11px; */
+    border-radius: 7px;
+    /* border: 1px solid black;
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: 6px;
+    cursor: pointer; */
+    font-size: 15px;
+  }
+  
+  .TotalCheckList{
+    width: 86%;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center; */
+    
+  }
+  #addTaskButton{
+    width: 100%;
+    /* padding: 16px; */
+    height: 36px;
+    border-radius: 7px;
+    font-size: 13px;
+    /* border: 1px solid #292929;
+    color: #cd899f;
+    transition: all 1.4s ease-out; */
+    margin-top: 30px;
+    /* margin-bottom: 30px; */
+  }
+  #addTaskButton:hover{
+    font-size: 15px;
+
+  }
+
+  .createTasksWrapper{
+    position: fixed;
+    top: 16%;
+    width: 80%;
+    padding: 30px;
+    border-radius: 7px;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-image: url("../src/assets/lined\ paper\ bg.png");
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: cover;
+    display: block;
+    animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards; */
+  }
+  
+  /* .createTasksWrapper h2{
+    text-align: center;
+    margin-bottom: 20px;
+  } */
+  .createTasks input, .createTasks select{
+    width: 100%;
+    height: 34px;
+    border-radius: 7px;
+    /* border: 1px solid #292929; */
+    font-size: 18px;
+    padding: 0px 6px;
+    margin-bottom: 8px;
+    /* margin-top:5px;
+    background-color: #ffffff00; */
+  }
+  .createTasks label{
+    font-size: 14px;
+  }
+
+  
+  /* .taskAdded input:checked  + label{
+    text-decoration: line-through;
+    color: #29292993;
+  } */
+  
+  /* .taskAdded input:checked {
+    accent-color: #cd899f;
+  } */
+  
+  .createTasksWrapper .fa-square-xmark{
+    font-size: 28px;
+    right: 8%;
+    top: 7%;
+  }
+  
+  .createTasks input[type="submit"]{
+    font-size: 14px;
+  }
+
+  .createTasks input[type="submit"]:hover{
+    background-size: 1000px;
+    
+  }
+
+  .eachTask{
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* .taskCheckList{
+    width: 100%;
+    text-align: center;
+    list-style-type: none;
+  } */
+  .taskCheckList #altText{
+    font-size: 18px;
+  }
+  .taskCheckList li{
+    /* display: flex;
+    padding: 4px 10px;
+    border: 1px solid #292929; */
+    border-radius: 7px;
+    /* margin-bottom: 12px; */
+    /* text-align: left;
+    animation: slide-in-from-left 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards; */
+  }
+  /* .taskCheckList li:hover{
+    outline: 2px solid #292929;
+  } */
+  .taskAdded{
+    width: 100%;
+    /* margin-top: auto;
+    margin-bottom: auto; */
+    font-size: 18px;
+    /* font-weight: 500; */
+  }
+  .taskAdded label{
+    margin-left: 3px;
+  }
+  
+  .taskInfo{
+    gap: 0px;
+    /* align-items: center; */
+    justify-content: space-around;
+  }
+  .priorityAdded{
+    width: 32px;
+    padding: 4px;
+    border-radius: 7px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 14px;
+    /* margin-right: 10px; */
+  }
+  
+  .dateAdded{
+    font-size: 14px;
+    width: max-content;
+    /* background-color: #292929;
+    border: 1px solid #292929;
+    color: #cd899f; */
+    padding: 8px;
+  }
+
+  /* .dateAdded .fa-calendar{
+    margin-right: 5px;
+  } */
+  .taskInfo button{
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 4px 8px;
+  }
+
+  
+  #changeTitle{
+    width: 90%;
+    font-size: 18px;
+    margin-left: 5px;
+    border-radius: 5px;
+    /* padding: 2px; */
+    margin-bottom: 2px;
+  }
+  #changeDate{
+    width: 36%;
+    font-size: 14px;
+    padding-left: 0px;
+    /* margin-right: -20px; */
+    border-radius: 5px;
+    padding: 3px;
+    /* margin: 0px 5px; */
+    
+  }
+
+  #deleteOverlay{
+    top: 30%;
+    width: 80%;
+    padding: 30px;
+    border-radius: 7px;
+  }
+  
+  #deleteOverlay h2{
+    text-align: center;
+    /* margin-bottom: 10px;
+    margin-top: 10px; */
+    font-size: 20px;
+  }
+  
+  #deleteOverlay button{
+    /* padding: 7px 10px; */
+    border-radius: 5px;
+    font-size: 13px;
+
+  }
+  #deleteOverlay .fa-heart-crack{
+    font-size: 55px;
+  }
+  /* #confirmDelete{
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  #allowDelete{
+    background-color: rgba(255, 255, 255, 0);
+  } */
+  /* #allowDelete:hover, #cancelDelete:hover{
+    background-color: #292929;
+    color: #cd899f;
+    transition: all 0.4s ease-in;
+  }
+  #cancelDelete{
+    background-color: #cd899f;
+  } */
+  
+  #mascot{
+    position: absolute;
+    width: 85px;
+    top: 150px;
+    right: 0px;
+  }
+  #strawberryMilk{
+    width: 100px;
+    top: 220px;
+    left: -30px;
+  }
+  #chaseGoals{
+    width: 100px;
+    right: -30px;
+    bottom: 70px;
+  }
+  
+  #congratsOverlay{
+    top: 25%;
+    right: 10%;
+    width: 80%;
+    padding: 30px;
+    border-radius: 7px;
+  }
+  #congratsOverlay h1{
+    font-size: 35px;
+  }
+  #congratsOverlay p{
+    font-size: 13px;
+  }
+  #congratsOverlay button{
+    font-size: 13px;
+    padding: 8px 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+  }
+  #congratsOverlay img{
+    width: 120px;
+  }
+}
