@@ -6,6 +6,11 @@ import Progressbar from "./components/ProgressBar";
 import DeleteOverlay from "./components/DeleteOverlay";
 import CongratsOverlay from "./components/CongratsOverlay";
 
+
+import progressMascot from "../src/assets/progress-bar-mascot.png";
+import strawerryMilk from "../src/assets/strawberry-milk.png"
+import chaseGoals from "../src/assets/chase-goals.png"
+
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
@@ -159,9 +164,9 @@ function App() {
       <Header onFilterChange={handleFilterChange} handleOverlay={handleOverlay}/>
       <Progressbar max={filteredTodos.length} value={completedTasks.length} onChange={()=> handleCongrats(completedTasks.length)}/>
     </div>
-    <img src="..\src\assets\progress-bar-mascot.png" alt="" id="mascot"/>
-    <img src="..\src\assets\strawberry-milk.png" alt="" id="strawberryMilk"/>
-    <img src="..\src\assets\chase-goals.png" alt="" id="chaseGoals"/>
+    <img src={progressMascot} alt="" id="mascot"/>
+    <img src={strawerryMilk} alt="" id="strawberryMilk"/>
+    <img src={chaseGoals} alt="" id="chaseGoals"/>
     <div className="TotalCheckList">
       <button id="addTaskButton" onClick={handleOverlay}><i className="fa-solid fa-plus" alt="Add Task"></i>   Click to Add a Task</button>
       <ol className="taskCheckList">
