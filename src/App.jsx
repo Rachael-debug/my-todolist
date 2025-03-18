@@ -4,7 +4,7 @@ import CheckList from "./components/Checklist";
 import TaskOverlay from "./components/TaskOverlay";
 import Progressbar from "./components/ProgressBar";
 import DeleteOverlay from "./components/DeleteOverlay";
-import CongratsOverlay from "./components/congratsOverlay";
+import CongratsOverlay from "./components/CongratsOverlay";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
