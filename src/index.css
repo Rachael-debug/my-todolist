@@ -32,7 +32,7 @@ body{
   margin-right: 50px;
  
   padding-bottom: 50px;
-  background-image: url("../src/assets/doodles\ background.png"), url("../src/assets/paper\ bg.png");
+  background-image: url("../src/assets/doodles-background.png"), url("../src/assets/paper-bg.png");
   background-repeat: repeat, repeat, repeat, repeat;
   background-color: white;
   background-size: cover;
@@ -89,7 +89,7 @@ progress::-webkit-progress-bar {
   );
 }
 progress::-webkit-progress-value {
-  background-image: url("../src/assets/pencil\ scrible.png");
+  background-image: url("../src/assets/pencil-scrible.png");
   background-repeat: no-repeat;
   background-color: #29292934;
   background-size: 1500px;
@@ -203,7 +203,7 @@ progress::-moz-progress-bar {
   padding: 40px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-image: url("../src/assets/lined\ paper\ bg.png");
+  background-image: url("../src/assets/lined-paper-bg.png");
   background-repeat: no-repeat;
   background-color: white;
   background-size: cover;
@@ -269,7 +269,7 @@ progress::-moz-progress-bar {
   font-family: "Montserrat";
 }
 .createTasks input[type="submit"]:hover{
-  background-image: url("../src/assets/pencil\ scrible.png");
+  background-image: url("../src/assets/pencil-scrible.png");
   background-repeat: no-repeat;
   background-color: #29292934;
   background-size: 1500px;
@@ -393,7 +393,7 @@ progress::-moz-progress-bar {
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-image: url("../src/assets/lined\ paper\ bg.png");
+  background-image: url("../src/assets/lined-paper-bg.png");
   background-repeat: no-repeat;
   background-color: white;
   background-size: cover;
@@ -469,7 +469,7 @@ progress::-moz-progress-bar {
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  background-image: url("../src/assets/lined\ paper\ bg.png");
+  background-image: url("../src/assets/lined-paper-bg.png");
   background-repeat: no-repeat;
   background-color: white;
   background-size: cover;
