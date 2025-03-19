@@ -428,6 +428,7 @@ progress::-moz-progress-bar {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.4s ease-in;
+  color: #212121;
 }
 #deleteOverlay .fa-heart-crack{
   font-size: 50px;
@@ -505,6 +506,7 @@ progress::-moz-progress-bar {
   border-radius: 7px;
   cursor: pointer;
   transition: all 0.4s ease-in-out;
+  color: #212121;
 }
 #congratsOverlay button:hover{
   background-color: #212121;
