@@ -19,6 +19,7 @@ html {
   -webkit-text-size-adjust: 100%;
 
   color: #292929;
+  overflow-x: hidden;
 }
 
 /* main {
@@ -565,7 +566,8 @@ progress::-moz-progress-bar {
   body{
     margin-left: 30px;
     margin-right: 30px;
-    overflow-x: hidden
+    overflow-x: hidden;
+
   }
   #root{
     overflow-x: hidden;
