@@ -565,6 +565,10 @@ progress::-moz-progress-bar {
   body{
     margin-left: 30px;
     margin-right: 30px;
+    overflow-x: hidden
+  }
+  #root{
+    overflow-x: hidden;
   }
 
   header h1{
@@ -871,7 +875,7 @@ progress::-moz-progress-bar {
   
   #congratsOverlay{
     top: 25%;
-    right: 10%;
+    right: auto;
     width: 80%;
     padding: 30px;
     border-radius: 7px;
