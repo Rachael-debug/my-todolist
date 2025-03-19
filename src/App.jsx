@@ -164,9 +164,11 @@ function App() {
       <Header onFilterChange={handleFilterChange} handleOverlay={handleOverlay}/>
       <Progressbar max={filteredTodos.length} value={completedTasks.length} onChange={()=> handleCongrats(completedTasks.length)}/>
     </div>
-    <img src={progressMascot} alt="" id="mascot"/>
-    <img src={strawerryMilk} alt="" id="strawberryMilk"/>
-    <img src={chaseGoals} alt="" id="chaseGoals"/>
+    <div id="journalImages">
+      <img src={progressMascot} alt="" id="mascot"/>
+      <img src={strawerryMilk} alt="" id="strawberryMilk"/>
+      <img src={chaseGoals} alt="" id="chaseGoals"/>
+    </div>
     <div className="TotalCheckList">
       <button id="addTaskButton" onClick={handleOverlay}><i className="fa-solid fa-plus" alt="Add Task"></i>   Click to Add a Task</button>
       <ol className="taskCheckList">

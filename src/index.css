@@ -895,4 +895,7 @@ progress::-moz-progress-bar {
   #congratsOverlay img{
     width: 120px;
   }
+  #journalImages{
+    overflow-x: hidden;
+  }
 }
