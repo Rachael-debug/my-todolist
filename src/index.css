@@ -875,6 +875,22 @@ progress::-moz-progress-bar {
     
   }
 
+  .task-filter{
+    height: 36px;
+    border-radius: 7px;
+  }
+
+  .task-filter button{
+    font-size: 12px;
+  }
+
+  .task-filter button:first-child{
+    border-radius: 6px 0px 0px 6px;
+  }
+  .task-filter button:last-child{
+    border-radius: 0px 6px 6px 0px;
+  }
+
   #deleteOverlay{
     top: 30%;
     width: 80%;
