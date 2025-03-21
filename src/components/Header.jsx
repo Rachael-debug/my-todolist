@@ -1,16 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function Header({ onFilterChange, handleOverlay }) {
+function Header({onDateFilterChange, handleOverlay }) {
     const [filter, setFilter] = useState("This Month");
+    const [isScrolled, setIsScrolled] = useState(false);
 
     function handleFilterChange(event) {
         const selectedFilter = event.target.value;
         setFilter(selectedFilter);
-        onFilterChange(selectedFilter); // Notify parent about the filter change
+        onDateFilterChange(selectedFilter); // Notify parent about the filter change
     }
 
+    useEffect(() => {
+        function handleScroll() {
+          if (window.scrollY > 50) {
+            setIsScrolled(true);
+          } else {
+            setIsScrolled(false);
+          }
+        }
+    
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+      }, []);
+
     return (
-        <header>
+        <header className= {isScrolled ? 'scrolled' : undefined}>
            <h1>My<br/>TodoList</h1>
            <div className="filterandadd">
            <select name="filterDate" id="filterDate" onChange={handleFilterChange} value={filter}>

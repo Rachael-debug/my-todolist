@@ -5,7 +5,7 @@ import TaskOverlay from "./components/TaskOverlay";
 import Progressbar from "./components/ProgressBar";
 import DeleteOverlay from "./components/DeleteOverlay";
 import CongratsOverlay from "./components/CongratsOverlay";
-
+import TaskFilter from "./components/TaskFilter";
 
 import progressMascot from "../src/assets/progress-bar-mascot.png";
 import strawerryMilk from "../src/assets/strawberry-milk.png"
@@ -14,7 +14,10 @@ import chaseGoals from "../src/assets/chase-goals.png"
 function App() {
   const [todoList, setTodoList] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
-  const [filter, setFilter] = useState("This Month");
+  const [dateFilter, setDateFilter] = useState("This Month"); // Filters by date
+  const [statusFilter, setStatusFilter] = useState("All"); // Filters by status
+  const [allTasksForDateFilter, setAllTasksForDateFilter] = useState([]);
+  // const [selectedStatus, setSelectedStatus] = useState();
   const [createTask, setCreateTask] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
   const [congratsOverlay, setCongratsOverlay] = useState(false);
@@ -77,16 +80,20 @@ function App() {
     );
   }
 
-  function handleFilterChange(selectedFilter) {
-    setFilter(selectedFilter);
+  function handleDateFilterChange(selectedDateFilter) {
+    setDateFilter(selectedDateFilter);
+  }
+  
+  function handleStatusFilterChange(selectedStatusFilter) {
+    setStatusFilter(selectedStatusFilter);
   }
 
   useEffect(() => {
     const today = new Date();
-    const filteredTasks = sortedTodos.filter(task => {
+    let filteredByDate = sortedTodos.filter(task => {
       const taskDate = new Date(task.taskDueDate);
       
-      switch (filter) {
+      switch (dateFilter) {
           case "Today":
               return taskDate.toDateString() === today.toDateString();
           case "Tomorrow":
@@ -106,10 +113,25 @@ function App() {
           default:
               return true;
       }
-  });
+    });
 
-  setFilteredTodos(filteredTasks);
-  }, [filter, todoList]);
+    setAllTasksForDateFilter(filteredByDate);
+
+    let finalFiltered = filteredByDate.filter(task => {
+      switch (statusFilter) {
+        case "All":
+          return true; // Show all tasks in selected date range
+        case "Pending":
+          return !task.completed; // Show only uncompleted tasks
+        case "Completed":
+          return task.completed; // Show only completed tasks
+        default:
+          return true;
+      }
+    });
+
+    setFilteredTodos(finalFiltered);
+  }, [dateFilter, statusFilter, todoList]);
 
   useEffect(() => {
     console.log(filteredTodos);
@@ -120,16 +142,18 @@ function App() {
     setTaskToDelete(null); // Close the overlay
   }
 
-  const completedTasks = filteredTodos.filter(todo => todo.completed);
+  const completedTasks = allTasksForDateFilter.filter(todo => todo.completed);
   useEffect(() => {
-    const uncompletedTasks = todoList.filter(todo => !todo.completed);
-    saveTasks(uncompletedTasks);
-    if (completedTasks.length !== filteredTodos.length) {
+    // const uncompletedTasks = todoList.filter(todo => !todo.completed);
+    saveTasks(todoList);
+   if (statusFilter === 'All'){
+    if (completedTasks.length !== allTasksForDateFilter.length) {
       setCongratsDismissed(false); // Reset if tasks are added/unchecked
     }
-    if (completedTasks.length === filteredTodos.length && filteredTodos.length > 0 && !congratsDismissed) {
+    if (completedTasks.length === allTasksForDateFilter.length && allTasksForDateFilter.length > 0 && !congratsDismissed) {
       setCongratsOverlay(true);
     } 
+   }
   })
   
 
@@ -160,47 +184,48 @@ function App() {
   
   return (
     <>
-    <div className="headerandprogressWrapper">
-      <Header onFilterChange={handleFilterChange} handleOverlay={handleOverlay}/>
-      <Progressbar max={filteredTodos.length} value={completedTasks.length} onChange={()=> handleCongrats(completedTasks.length)}/>
-    </div>
-    <div id="journalImages">
-      <img src={progressMascot} alt="" id="mascot"/>
-      <img src={strawerryMilk} alt="" id="strawberryMilk"/>
-      <img src={chaseGoals} alt="" id="chaseGoals"/>
-    </div>
-    <div className="TotalCheckList">
-      <button id="addTaskButton" onClick={handleOverlay}><i className="fa-solid fa-plus" alt="Add Task"></i>   Click to Add a Task</button>
-      <ol className="taskCheckList">
-          {filteredTodos && filteredTodos.length > 0 ? (
-              filteredTodos?.map((item) => (
-              <CheckList 
-                key={item.id} 
-                checked={item.completed} 
-                taskAdded={item.taskTitle} 
-                taskPriority={item.taskPriority} 
-                taskDue={item.taskDueDate} 
-                handleDelete={()=>setTaskToDelete(item.id)}
-                onChange={() => toggleComplete(item.id)}
-                id={item.id}
-                onChangeName={handleTaskChange}
-              />
-              ))
-          ) : (
-              <p id="altText">Seems lonely in here, what are you up to?</p>
-          )}
-      </ol>
-      {createTask !== false &&(
-      <TaskOverlay handleSubmit={handleSubmit} cancelCreateTask={()=>setCreateTask(false)}/>
+    <Header onDateFilterChange={handleDateFilterChange} handleOverlay={handleOverlay}/>
+    <div id="siteBody">
+      <Progressbar max={allTasksForDateFilter.length} value={completedTasks.length} onChange={()=> handleCongrats(completedTasks.length)}/>
+      <div id="journalImages">
+        <img src={progressMascot} alt="" id="mascot"/>
+        <img src={strawerryMilk} alt="" id="strawberryMilk"/>
+        <img src={chaseGoals} alt="" id="chaseGoals"/>
+      </div>
+      <div className="TotalCheckList">
+        <button id="addTaskButton" onClick={handleOverlay}><i className="fa-solid fa-plus" alt="Add Task"></i>   Click to Add a Task</button>
+        <TaskFilter onStatusFilterChange={handleStatusFilterChange} isSelected={statusFilter}/>
+        <ol className="taskCheckList">
+            {filteredTodos && filteredTodos.length > 0 ? (
+                filteredTodos?.map((item) => (
+                <CheckList 
+                  key={item.id} 
+                  checked={item.completed} 
+                  taskAdded={item.taskTitle} 
+                  taskPriority={item.taskPriority} 
+                  taskDue={item.taskDueDate} 
+                  handleDelete={()=>setTaskToDelete(item.id)}
+                  onChange={() => toggleComplete(item.id)}
+                  id={item.id}
+                  onChangeName={handleTaskChange}
+                />
+                ))
+            ) : (
+                <p id="altText">Seems lonely in here, what are you up to?</p>
+            )}
+        </ol>
+        {createTask !== false &&(
+        <TaskOverlay handleSubmit={handleSubmit} cancelCreateTask={()=>setCreateTask(false)}/>
+        )}
+        {taskToDelete !== null && (
+          <DeleteOverlay handleDelete={handleDelete} cancelDelete={() => setTaskToDelete(null)}/>
+        )}
+      </div>
+      {congratsOverlay !== false && (
+        <CongratsOverlay cancelCongrats={handleCloseCongrats}/>
       )}
-      {taskToDelete !== null && (
-        <DeleteOverlay handleDelete={handleDelete} cancelDelete={() => setTaskToDelete(null)}/>
-      )}
-    </div>
-    {congratsOverlay !== false && (
-      <CongratsOverlay cancelCongrats={handleCloseCongrats}/>
-    )}
    
+    </div>
      
     </>
   );
