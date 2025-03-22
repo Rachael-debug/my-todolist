@@ -6,6 +6,9 @@ import Progressbar from "./components/ProgressBar";
 import DeleteOverlay from "./components/DeleteOverlay";
 import CongratsOverlay from "./components/CongratsOverlay";
 import TaskFilter from "./components/TaskFilter";
+import ClearandReset from "./components/ClearandReset";
+import ResetOverlay from "./components/ResetOverlay";
+import ClearCompletedOverlay from "./components/ClearCompletedOverlay";
 
 import progressMascot from "../src/assets/progress-bar-mascot.png";
 import strawerryMilk from "../src/assets/strawberry-milk.png"
@@ -17,7 +20,8 @@ function App() {
   const [dateFilter, setDateFilter] = useState("This Month"); // Filters by date
   const [statusFilter, setStatusFilter] = useState("All"); // Filters by status
   const [allTasksForDateFilter, setAllTasksForDateFilter] = useState([]);
-  // const [selectedStatus, setSelectedStatus] = useState();
+  const [clearOverlay, setClearOverlay] = useState(false);
+  const [resetOverlay, setResetOverlay]= useState(false)
   const [createTask, setCreateTask] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
   const [congratsOverlay, setCongratsOverlay] = useState(false);
@@ -180,6 +184,16 @@ function App() {
     );
   }
   
+  function handleReset(){
+    setTodoList([]);
+    setResetOverlay(false)
+  }
+
+  function handleClear(){
+    const remainingTasks = todoList.filter(task => !task.completed); // Keep only pending tasks
+    setTodoList(remainingTasks); 
+    setClearOverlay(false)
+  }
 
   
   return (
@@ -224,6 +238,16 @@ function App() {
       {congratsOverlay !== false && (
         <CongratsOverlay cancelCongrats={handleCloseCongrats}/>
       )}
+
+      {resetOverlay !== false && (
+        <ResetOverlay allowReset={handleReset} cancelReset={()=> setResetOverlay(false)}/>
+      )}
+
+      {clearOverlay !== false && (
+        <ClearCompletedOverlay allowClear={handleClear} cancelClear={()=> setClearOverlay(false)}/>
+      )}
+
+      <ClearandReset Clear={()=> setClearOverlay(true)} Reset={()=> setResetOverlay(true)}/>
    
     </div>
      

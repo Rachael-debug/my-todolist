@@ -437,7 +437,7 @@ progress::-moz-progress-bar {
 }
 
 
-#deleteOverlay{
+#deleteOverlay, #Overlay{
   position: fixed;
   top: 25%;
   width: 40%;
@@ -456,14 +456,17 @@ progress::-moz-progress-bar {
   transition: all 0.4s ease-in;
   animation: pop-in 0.5s cubic-bezier(0.68, -0.55, 0.65, 0.52) forwards;
 }
+#Overlay{
+  left: 30%;
+}
 
-#deleteOverlay h2{
+#deleteOverlay h2, #Overlay h2{
   text-align: center;
   margin-bottom: 10px;
   margin-top: 10px;
 }
 
-#deleteOverlay button{
+#deleteOverlay button, #Overlay button, #clearCompletedButton, #resetAppButton{
   padding: 7px 10px;
   border: 1px solid #292929;
   border-radius: 7px;
@@ -478,21 +481,42 @@ progress::-moz-progress-bar {
   font-size: 50px;
   color: #cd899f;
 }
-#confirmDelete{
+
+#confirmDelete, #confirm{
   display: flex;
   gap: 20px;
   margin-top: 20px;
 }
-#allowDelete{
+#allowDelete, #allow{
   background-color: rgba(255, 255, 255, 0);
 }
-#allowDelete:hover, #cancelDelete:hover{
+#allowDelete:hover, #cancelDelete:hover, #allow:hover, #cancel:hover, #clearCompletedButton:hover{
   background-color: #292929;
   color: #cd899f;
   transition: all 0.4s ease-in;
 }
-#cancelDelete{
+#cancelDelete, #cancel{
   background-color: #cd899f;
+}
+#Overlay img{
+  width: 100px;
+}
+#clearandResetButtons{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 1;
+  bottom: 30px;
+}
+#clearCompletedButton, #resetAppButton:hover{
+  background-color: #cd899f;
+  color: #212121;
+  transition: all 0.4s ease-in;
+}
+#resetAppButton{
+  background-color: #212121;
+  color: #cd899f;
 }
 
 #mascot{
@@ -504,13 +528,13 @@ progress::-moz-progress-bar {
 #strawberryMilk{
   position: absolute;
   width: 225px;
-  top: 300px;
+  top: 250px;
 }
 #chaseGoals{
   position: absolute;
   width: 230px;
   right: 60px;
-  bottom: -70px;
+  bottom: 0px;
 }
 
 #congratsOverlay{
@@ -891,29 +915,38 @@ progress::-moz-progress-bar {
     border-radius: 0px 6px 6px 0px;
   }
 
-  #deleteOverlay{
+  #deleteOverlay, #Overlay{
     top: 30%;
     width: 80%;
     padding: 30px;
     border-radius: 7px;
   }
   
-  #deleteOverlay h2{
+  #deleteOverlay h2, #Overlay h2{
     text-align: center;
     /* margin-bottom: 10px;
     margin-top: 10px; */
     font-size: 20px;
   }
   
-  #deleteOverlay button{
+  #deleteOverlay button, #Overlay button, #clearCompletedButton, #resetAppButton{
     /* padding: 7px 10px; */
     border-radius: 5px;
     font-size: 13px;
 
   }
+  #Overlay{
+    left: 10%;
+  }
   #deleteOverlay .fa-heart-crack{
     font-size: 55px;
   }
+
+  #clearandResetButtons{
+    width: 86%;
+    bottom: 40px;
+  }
+  
   
   #mascot{
     position: absolute;
