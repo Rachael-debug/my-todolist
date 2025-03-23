@@ -150,7 +150,7 @@ function App() {
   useEffect(() => {
     // const uncompletedTasks = todoList.filter(todo => !todo.completed);
     saveTasks(todoList);
-   if (statusFilter === 'All'){
+   if (statusFilter === 'All'|| statusFilter ==='Pending'){
     if (completedTasks.length !== allTasksForDateFilter.length) {
       setCongratsDismissed(false); // Reset if tasks are added/unchecked
     }
